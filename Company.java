@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Company {
-    
 
-    private int income;
+
+    private static int income;
 
     public ArrayList<Employee> getTopSalaryStaff(int count)
     {
@@ -16,17 +13,25 @@ public class Company {
     {
         return null;
     }
+    public ArrayList<TopManager> topManagers = new ArrayList<>();
 
 
+
+    public void setIncome(int income) {
+        this.income = income;
+    }
 
     public int getIncome()
     {
         return income;
     }
 
-    public void setIncome(int income) {
-        this.income = income;
+    public void addTopManager(TopManager topManager)
+    {
+        topManagers.add(topManager);
     }
+
+
     public void generateStaff()
 
     {
