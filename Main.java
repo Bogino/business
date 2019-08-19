@@ -6,10 +6,17 @@ public class Main {
     public static void main(String[] args) {
 
         Company apple = new Company();
+        TopManager vasya = new TopManager("Vasya", apple);
+        apple.setIncome(12000000);
+        System.out.println(vasya.getMonthSalary());
         apple.generateStaff();
-        System.out.println(apple.staff.size());
-        Operator operator = new Operator();
-        System.out.println(operator.getOperator("3").getMonthSalary());
+        Operator gena = new Operator("Gena", apple);
+        apple.addPerson(gena);
+        System.out.println(apple.getStaff().size());
+
+
+
+
 
     }
 }

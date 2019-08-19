@@ -3,7 +3,7 @@ import java.util.*;
 public class Company {
 
 
-    private static int income;
+    private int income;
     public ArrayList<Employee> getTopSalaryStaff(int count)
     {
         return null;
@@ -12,7 +12,7 @@ public class Company {
     {
         return null;
     }
-    public ArrayList<String> staff = new ArrayList<>();
+    private ArrayList<Company> staff = new ArrayList<>();
     public void setIncome(int income)
     {
         this.income = income;
@@ -22,22 +22,46 @@ public class Company {
         return income;
     }
 
-
+    public Company getCompany()
+    {
+        return this;
+    }
 
     public void generateStaff()
     {
         for (int i = 0; i < 270; i++)
         {
-            SalesManager.salesManagers.add(Integer.toString(i));
-            staff.add(SalesManager.salesManagers.get(i));
-            if (staff.size()==270){break;}
-            TopManager.topManagers.add(Integer.toString(i));
-            staff.add(TopManager.topManagers.get(i));
-            if (staff.size()==270){break;}
-            Operator.operators.add(Integer.toString(i));
-            staff.add(Operator.operators.get(i));
-            if (staff.size()==270){break;}
+            SalesManager salesManager = new SalesManager(Integer.toString(i), getCompany());
+            staff.add(salesManager);
+            if (staff.size() == 270)
+            {
+                break;
+            }
+            TopManager topManager = new TopManager(Integer.toString(i), getCompany());
+            staff.add(topManager);
+            if (staff.size() == 270)
+            {
+                break;
+            }
+            Operator operator = new Operator(Integer.toString(i), getCompany());
+            staff.add(operator);
+            if (staff.size() == 270)
+            {
+                break;
+            }
         }
+    }
+    public void fireEmployee(Company person)
+    {
+        staff.remove(person);
+    }
+    public void addPerson(Company person)
+    {
+        staff.add(person);
+    }
+    public ArrayList<Company> getStaff()
+    {
+        return staff;
     }
 
 }

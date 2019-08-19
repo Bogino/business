@@ -6,21 +6,19 @@ public class SalesManager extends Company implements Employee {
     private int FIXED_SALARY = 100000;
     private double PERCENT = 0.05;
     private int monthSalary;
-    public static ArrayList<String> salesManagers = new ArrayList<>();
+    private Company workplace;
+    private String name;
 
-    public SalesManager getSalesManager(String name)
+    public SalesManager(String name, Company company)
     {
-        if (salesManagers.contains(name))
-        {
-            return this;
-        }
-        return null;
+        this.name = name;
+        workplace = company;
     }
 
     @Override
     public int getMonthSalary()
     {
-        monthSalary = (int) (FIXED_SALARY + getIncome()*PERCENT);
+        monthSalary = (int) (FIXED_SALARY + workplace.getIncome()*PERCENT);
         return monthSalary;
     }
 }

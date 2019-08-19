@@ -5,20 +5,20 @@ public class TopManager extends Company implements Employee {
     private int FIXED_SALARY = 150000;
     private int PRIZE = 70000;
     private int monthSalary;
-    public static ArrayList<String> topManagers = new ArrayList<>();
+    private String name;
+    private Company workplace;
 
-    public TopManager getTopManager(String name)
+
+    public TopManager(String name, Company company)
     {
-        if (topManagers.contains(name))
-        {
-            return this;
-        }
-        return null;
+        this.name = name;
+        workplace = company;
     }
 
     @Override
-    public int getMonthSalary() {
-        monthSalary = getIncome() > 10000000? FIXED_SALARY + PRIZE : FIXED_SALARY;
+    public int getMonthSalary()
+    {
+        monthSalary = workplace.getIncome() > 10000000? FIXED_SALARY + PRIZE : FIXED_SALARY;
         return monthSalary;
     }
 }
