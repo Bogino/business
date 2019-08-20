@@ -1,18 +1,43 @@
 import java.util.*;
 
+
 public class Company {
 
-
     private int income;
+
+    private ArrayList<Employee> staff = new ArrayList<>();
+
     public ArrayList<Employee> getTopSalaryStaff(int count)
     {
+        TreeSet<Employee> employees = new TreeSet<>(new CompanyComparator());
+
+        for (int i = 0; i < count; i++)
+        {
+            employees.add(staff.get(i));
+            for (Employee employee : employees)
+            {
+                System.out.println(employee.getMonthSalary() + " " + employee.getClass().toString().replaceAll("class",""));
+                break;
+            }
+        }
         return null;
     }
     public ArrayList<Employee> getLowestSalaryStaff(int count)
     {
+        TreeSet<Employee> employees = new TreeSet<>();
+
+        for (int i = 0; i < count; i++)
+        {
+            employees.add(staff.get(i));
+            for (Employee employee : employees)
+            {
+                System.out.println(employee.getMonthSalary() + " " + employee.getClass().toString().replaceAll("class",""));
+                break;
+            }
+        }
         return null;
     }
-    private ArrayList<Company> staff = new ArrayList<>();
+
     public void setIncome(int income)
     {
         this.income = income;
@@ -31,37 +56,35 @@ public class Company {
     {
         for (int i = 0; i < 270; i++)
         {
-            SalesManager salesManager = new SalesManager(Integer.toString(i), getCompany());
-            staff.add(salesManager);
+            staff.add(new SalesManager(Integer.toString(i), getCompany()));
             if (staff.size() == 270)
             {
                 break;
             }
-            TopManager topManager = new TopManager(Integer.toString(i), getCompany());
-            staff.add(topManager);
+            staff.add(new TopManager(Integer.toString(i), getCompany()));
             if (staff.size() == 270)
             {
                 break;
             }
-            Operator operator = new Operator(Integer.toString(i), getCompany());
-            staff.add(operator);
+            staff.add(new Operator(Integer.toString(i), getCompany()));
             if (staff.size() == 270)
             {
                 break;
             }
         }
     }
-    public void fireEmployee(Company person)
+    public void fireEmployee(Employee person)
     {
         staff.remove(person);
     }
-    public void addPerson(Company person)
+    public void addPerson(Employee person)
     {
         staff.add(person);
     }
-    public ArrayList<Company> getStaff()
+    public ArrayList<Employee> getStaff()
     {
         return staff;
     }
+
 
 }

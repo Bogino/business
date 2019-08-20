@@ -1,10 +1,9 @@
-import java.util.ArrayList;
-
-public class Operator extends Company implements Employee {
+public class Operator extends Company implements Employee, Comparable<Employee> {
 
     private int FIXED_SALARY = 80000;
     private String name;
     private Company workplace;
+
 
     public Operator(String name, Company company)
     {
@@ -13,9 +12,23 @@ public class Operator extends Company implements Employee {
     }
 
 
+
     @Override
     public int getMonthSalary()
     {
         return FIXED_SALARY;
+    }
+
+    @Override
+    public int compareTo(Employee employee) {
+        if (getMonthSalary() > employee.getMonthSalary())
+        {
+            return -1;
+        }
+        if (getMonthSalary() < employee.getMonthSalary())
+        {
+            return 1;
+        }
+        return 0;
     }
 }
