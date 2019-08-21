@@ -14,33 +14,25 @@ public class Company {
 
     public ArrayList<Employee> getTopSalaryStaff(int count)
     {
-        TreeSet<Employee> employees = new TreeSet<>(new CompanyComparator());
-
-        for (int i = 0; i < count; i++)
+        ArrayList<Employee> list = new ArrayList<>();
+        staff.sort(new CompanyComparator());
+        list.addAll(staff);
+        for (Employee employee: list.subList(0,count))
         {
-            employees.add(staff.get(i));
-            for (Employee employee : employees)
-            {
-                System.out.println(employee.getMonthSalary() + " " + employee.getClass().toString().replaceAll("class",""));
-                break;
-            }
+            System.out.println(employee.getMonthSalary());
         }
-        return employees;
+        return list;
     }
     public ArrayList<Employee> getLowestSalaryStaff(int count)
     {
-        TreeSet<Employee> employees = new TreeSet<>(new CompanyComparator().reversed());
-
-        for (int i = 0; i < count; i++)
+        ArrayList<Employee> list = new ArrayList<>();
+        staff.sort(new CompanyComparator().reversed());
+        list.addAll(staff);
+        for (Employee employee: list.subList(0,count))
         {
-            employees.add(staff.get(i));
-            for (Employee employee : employees)
-            {
-                System.out.println(employee.getMonthSalary() + " " + employee.getClass().toString().replaceAll("class",""));
-                break;
-            }
+            System.out.println(employee.getMonthSalary());
         }
-        return null;
+        return list;
     }
 
     public void setIncome(int income)
