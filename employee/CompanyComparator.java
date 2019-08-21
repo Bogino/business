@@ -1,3 +1,5 @@
+package employee;
+
 import java.util.Comparator;
 
 public class CompanyComparator implements Comparator<Employee> {

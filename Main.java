@@ -1,7 +1,10 @@
-import java.io.IOException;
-import java.net.CacheRequest;
+import company.Company;
+import employee.Employee;
+import employee.Operator;
+import employee.SalesManager;
+import employee.TopManager;
+
 import java.util.ArrayList;
-import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,20 +12,32 @@ public class Main {
         Company apple = new Company();
         TopManager vasya = new TopManager("Vasya", apple);
         apple.setIncome(12000000);
-        Operator gena = new Operator("Gena", apple);
-        apple.addPerson(gena);
-        apple.fireEmployee(gena);
-        apple.getStaff().remove(gena);
-        System.out.println(apple.getStaff().size());
-        Employee man = new TopManager("geg",apple);
-        System.out.println(man.getMonthSalary());
-        apple.getStaff().add(man);
-        System.out.println(apple.getStaff().size());
-        apple.generateStaff();
+
+        ArrayList<Employee> operators = new ArrayList<>();
+        for (int i =0; i < 200; i++)
+        {
+            operators.add(new Operator(Integer.toString(i), apple));
+        }
+        ArrayList<Employee> salesManagers = new ArrayList<>();
+        for (int i =0; i < 50; i++)
+        {
+            salesManagers.add(new SalesManager(Integer.toString(i), apple));
+        }
+        ArrayList<Employee> topManagers = new ArrayList<>();
+        for (int i =0; i < 20; i++)
+        {
+            topManagers.add(new TopManager(Integer.toString(i), apple));
+        }
+        apple.hire(operators);
+        apple.hire(salesManagers);
+        apple.hire(topManagers);
         System.out.println(apple.getStaff().size());
 
+        apple.getLowestSalaryStaff(10);
+        System.out.println("===========================");
+        apple.getTopSalaryStaff(10);
 
-        apple.getLowestSalaryStaff(7);
+
 
 
     }

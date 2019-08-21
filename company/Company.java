@@ -1,3 +1,8 @@
+package company;
+
+import employee.CompanyComparator;
+import employee.Employee;
+
 import java.util.*;
 
 
@@ -20,11 +25,11 @@ public class Company {
                 break;
             }
         }
-        return null;
+        return employees;
     }
     public ArrayList<Employee> getLowestSalaryStaff(int count)
     {
-        TreeSet<Employee> employees = new TreeSet<>();
+        TreeSet<Employee> employees = new TreeSet<>(new CompanyComparator().reversed());
 
         for (int i = 0; i < count; i++)
         {
@@ -52,26 +57,9 @@ public class Company {
         return this;
     }
 
-    public void generateStaff()
+    public void hire(List<Employee> newStaff)
     {
-        for (int i = 0; i < 270; i++)
-        {
-            staff.add(new SalesManager(Integer.toString(i), getCompany()));
-            if (staff.size() == 270)
-            {
-                break;
-            }
-            staff.add(new TopManager(Integer.toString(i), getCompany()));
-            if (staff.size() == 270)
-            {
-                break;
-            }
-            staff.add(new Operator(Integer.toString(i), getCompany()));
-            if (staff.size() == 270)
-            {
-                break;
-            }
-        }
+        staff.addAll(newStaff);
     }
     public void fireEmployee(Employee person)
     {

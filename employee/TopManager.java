@@ -1,4 +1,8 @@
-public class TopManager extends Company implements Employee, Comparable<Employee> {
+package employee;
+
+import company.Company;
+
+public class TopManager implements Employee {
 
     private int FIXED_SALARY = 150000;
     private int PRIZE = 70000;
@@ -21,16 +25,4 @@ public class TopManager extends Company implements Employee, Comparable<Employee
         return monthSalary;
     }
 
-    @Override
-    public int compareTo(Employee employee) {
-        if (getMonthSalary() > employee.getMonthSalary())
-        {
-            return -1;
-        }
-        if (getMonthSalary() < employee.getMonthSalary())
-        {
-            return 1;
-        }
-        return 0;
-    }
 }
