@@ -4,8 +4,8 @@ import company.Company;
 
 public class SalesManager implements Employee {
 
-    private int FIXED_SALARY = 100000;
-    private double PERCENT = 0.05;
+    private final int FIXED_SALARY = 100000;
+    private final double PERCENT = 0.05;
     private int monthSalary;
     private Company workplace;
     private String name;

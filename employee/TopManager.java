@@ -4,8 +4,8 @@ import company.Company;
 
 public class TopManager implements Employee {
 
-    private int FIXED_SALARY = 150000;
-    private int PRIZE = 70000;
+    private final int FIXED_SALARY = 150000;
+    private final int PRIZE = 70000;
     private int monthSalary;
     private String name;
     private Company workplace;

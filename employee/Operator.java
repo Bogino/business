@@ -4,7 +4,7 @@ import company.Company;
 
 public class Operator implements Employee {
 
-    private int FIXED_SALARY = 80000;
+    private final int FIXED_SALARY = 80000;
     private String name;
     private Company workplace;
 

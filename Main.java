@@ -33,9 +33,12 @@ public class Main {
         apple.hire(topManagers);
         System.out.println(apple.getStaff().size());
 
-        apple.getLowestSalaryStaff(10);
+
+        apple.getLowestSalaryStaff(210);
         System.out.println("===========================");
-        apple.getTopSalaryStaff(10);
+        apple.getTopSalaryStaff(200);
+
+        System.out.println(apple.getStaff().size());
 
 
 
