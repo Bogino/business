@@ -10,39 +10,15 @@ public class Company {
 
     private int income;
 
-    private ArrayList<Employee> staff = new ArrayList<>();
+    private static ArrayList<Employee> staff = new ArrayList<>();
 
-    public ArrayList<Employee> getTopSalaryStaff(int count)
+    public List<Employee> getTopSalaryStaff(int count)
     {
-        if (count <= staff.size()){
-        ArrayList<Employee> list = new ArrayList<>(staff);
-        list.sort(new CompanyComparator());
-        for (Employee employee: list.subList(0,count))
-        {
-            System.out.println(employee.getMonthSalary());
-        }
-        return list;}
-        else
-            {
-                System.out.println("Введеное количество превышает штат сотрудников");
-            }
-        return null;
+        return getSortedList(new CompanyComparator(),count);
     }
-    public ArrayList<Employee> getLowestSalaryStaff(int count)
+    public List<Employee> getLowestSalaryStaff(int count)
     {
-        if (count <= staff.size()){
-            ArrayList<Employee> list = new ArrayList<>(staff);
-            list.sort(new CompanyComparator().reversed());
-            for (Employee employee: list.subList(0,count))
-            {
-                System.out.println(employee.getMonthSalary());
-            }
-            return list;}
-        else
-        {
-            System.out.println("Введеное количество превышает штат сотрудников");
-        }
-        return null;
+       return getSortedList(new CompanyComparator().reversed(), count);
     }
 
     public void setIncome(int income)
@@ -75,14 +51,13 @@ public class Company {
     {
         return staff;
     }
-    public static ArrayList<Employee> x(ArrayList<Employee> list, int number)
+    public static List<Employee> getSortedList(Comparator<Employee> comparator, int count)
     {
-        ArrayList<Employee> employees = new ArrayList<>(list);
-        for (Employee employee : employees.subList(0,number))
-        {
-            System.out.println(employee.getMonthSalary());
-        }
-        return employees;
+        count = count > staff.size() ? staff.size() : count;
+        staff.sort(comparator);
+        List<Employee> result = staff.subList(0,count);
+        result.forEach(e -> System.out.println(e.getMonthSalary()));
+        return result;
     }
 
 

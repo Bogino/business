@@ -34,14 +34,11 @@ public class Main {
         System.out.println(apple.getStaff().size());
 
 
-        apple.getLowestSalaryStaff(210);
+        apple.getLowestSalaryStaff(1005);
         System.out.println("===========================");
-        apple.getTopSalaryStaff(200);
+        apple.getTopSalaryStaff(15);
 
         System.out.println(apple.getStaff().size());
-
-
-
 
     }
 }
